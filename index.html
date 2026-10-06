@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aman Bhardwaj - Interdisciplinary researcher in AI, Machine Learning, and Healthcare at IIT Delhi and IBM Research">
+    <meta name="description" content="Aman Bhardwaj — Interdisciplinary researcher in AI, Machine Learning, and Healthcare at IIT Delhi and IBM Research">
     <meta name="keywords" content="Aman Bhardwaj, AI Research, Machine Learning, Healthcare AI, IIT Delhi, IBM Research, RAG, AI Agents, Agentic AI, AI workflows">
     <meta name="author" content="Aman Bhardwaj">
     <title>Aman Bhardwaj | AI Researcher</title>
+
+    <!-- IBM Plex fonts — same family used in the reference design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Canvas: background particle network -->
+    <canvas id="netbg" aria-hidden="true"></canvas>
+    <!-- Canvas: link sparkle overlay -->
+    <canvas id="linkfx" aria-hidden="true"></canvas>
+
+    <!-- SVG blob clip-path definition (hidden) -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false"
+         style="position:absolute;width:0;height:0;overflow:hidden">
+        <defs>
+            <clipPath id="hero-blob" clipPathUnits="objectBoundingBox">
+                <path d="M0.748,0.258 C0.862,0.390 0.948,0.592 0.882,0.722
+                         C0.816,0.852 0.596,0.910 0.428,0.880
+                         C0.260,0.850 0.142,0.730 0.088,0.608
+                         C0.034,0.486 0.042,0.354 0.100,0.256
+                         C0.158,0.158 0.268,0.092 0.386,0.086
+                         C0.504,0.080 0.634,0.126 0.748,0.258 Z"/>
+            </clipPath>
+        </defs>
+    </svg>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">Aman Bhardwaj</div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+            <div class="nav-brand">Aman Bhardwaj<span class="dot">.</span></div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -26,23 +53,31 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#news">News</a></li>
+                <li><a href="#timeline">Updates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-cover"></div>
+    <section class="hero" id="home">
+        <!-- Background image with directional tint -->
+        <div class="hero-bg">
+            <img class="hero-bg-image" src="images/cover.jpg" alt="" aria-hidden="true">
+            <div class="hero-bg-tint"></div>
+        </div>
+
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-profile-wrapper">
-                    <img src="images/profile.jpg" alt="Aman Bhardwaj" class="hero-profile-image">
-                </div>
-                <h1 class="hero-title">Aman Bhardwaj</h1>
-                <p class="hero-subtitle">PhD Researcher | AI & Machine Learning | Healthcare For Developing Nations</p>
-                <p class="hero-affiliation">IIT Delhi • IBM Research • NIT Hamirpur</p>
+            <!-- Text column -->
+            <div class="hero-text">
+                <p class="eyebrow">Doctoral Researcher · AI &amp; Machine Learning · Healthcare</p>
+                <h1 class="hero-title">Bridging math,<br>machines &amp; medicine.</h1>
+                <p class="hero-subtitle">
+                    <!-- Physiology-informed AI for healthcare in resource-constrained settings —
+                    with clinical deployments at AIIMS-Delhi and IBM Research. -->
+                    Developing interpretable AI-based healthcare solutions particularly for resource-constrained settings of developing nations in collaboration with AIIMS-Delhi.
+                </p>
+                <p class="hero-affiliation">IIT Delhi &nbsp;·&nbsp; IBM Research &nbsp;·&nbsp; NIT Hamirpur</p>
                 <div class="hero-links">
                     <a href="https://github.com/CosmoLuminous" target="_blank" class="btn-link" aria-label="GitHub">
                         <i class="fab fa-github"></i> GitHub
@@ -58,74 +93,104 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Portrait blob column -->
+            <div class="hero-portrait-wrap">
+                <div class="hero-portrait-blob">
+                    <img src="images/profile.jpg" alt="Portrait of Aman Bhardwaj" fetchpriority="high">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-header">
+                <p class="eyebrow">About</p>
+                <h2 class="section-title">Who I am</h2>
+            </div>
             <div class="about-content">
+                <!-- <p class="lead">
+                    Interdisciplinary researcher bridging <strong>mathematics, machine learning, and medicine</strong>
+                    to develop <strong>interpretable, physiology-informed AI</strong> for healthcare in
+                    resource-constrained settings.
+                </p>
+                <p>
+                    I pioneer <strong>constrained optimization frameworks</strong> that embed domain knowledge into
+                    computational models, challenging the black-box paradigm of deep learning. My research addresses
+                    healthcare disparities in developing nations through mathematically principled, transparent, and
+                    clinically actionable diagnostic systems deployed in collaboration with
+                    <strong>AIIMS-Delhi</strong> and <strong>AFMC-Pune</strong>.
+                </p>
+                <p>
+                    As a researcher at <strong>IBM India Research Lab</strong>, I advance trustworthy and
+                    enterprise-scale AI systems, focusing on <strong>Large Language Models (LLMs)</strong> for
+                    mission-critical legacy code modernization in financial and healthcare domains, with expertise in
+                    <strong>RAG, AI-agents, neural machine translation, and prompt-engineering</strong>.
+                </p> -->
                 <p class="lead">
-                    Interdisciplinary researcher bridging <strong>mathematics, machine learning, and medicine</strong> to develop 
-                    <strong>interpretable, physiology-informed AI</strong> for healthcare in resource-constrained settings.
+                    Researcher working at the intersection of <strong>mathematics, machine learning, and medicine</strong>
+                    to develop <strong>interpretable, physiology-informed AI</strong> for healthcare in
+                    resource-constrained settings.
                 </p>
                 <p>
-                    I pioneer <strong>constrained optimization frameworks</strong> that embed domain knowledge into computational models, 
-                    challenging the black-box paradigm of deep learning. My research addresses healthcare disparities in developing nations 
-                    through mathematically principled, transparent, and clinically actionable diagnostic systems deployed in collaboration 
-                    with <strong>AIIMS-Delhi</strong> and <strong>AFMC-Pune</strong>.
+                    I develop <strong>constrained optimization methods</strong> that build domain knowledge directly
+                    into computational models, rather than treating them as black boxes. Together with clinicians at
+                    <strong>AIIMS-Delhi</strong> and <strong>AFMC (Armed Forces Medical College), Pune</strong>, I work on
+                    diagnostic tools designed to be transparent and usable where specialist care is scarce.
+                    <!-- Add one specific result here, e.g. "Our system for X was validated on N patients at AIIMS-Delhi." -->
                 </p>
                 <p>
-                    As a researcher at <strong>IBM India Research Lab</strong>, I advance trustworthy and enterprise-scale AI systems, 
-                    focusing on <strong>Large Language Models (LLMs)</strong> for mission-critical legacy code modernization in financial 
-                    and healthcare domains, with expertise in <strong>RAG, AI-agents, neural machine translation, and prompt-engineering</strong>.
+                    At <strong>IBM India Research Lab</strong>, I apply the same emphasis on reliability to enterprise AI,
+                    building <strong>LLM-based systems</strong> for modernizing legacy code in financial and healthcare
+                    domains, including work on <strong>retrieval-augmented generation (RAG)</strong> and
+                    <strong>AI agents</strong>.
+                </p>
+                <p>
+                    I'm always happy to talk with researchers and clinicians working on similar problems.
+                    <!-- Optional: <a href="publications.html">See my publications</a> or <a href="mailto:you@example.com">get in touch</a>. -->
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Research Section -->
-    <section id="research" class="section section-alt">
+    <section id="research" class="section">
         <div class="container">
-            <h2 class="section-title">Research Focus</h2>
+            <div class="section-header">
+                <p class="eyebrow">Research Focus</p>
+                <h2 class="section-title">What I work on</h2>
+                <p class="section-lede">
+                    Three interlocking threads — physiology, clinical AI, and enterprise systems —
+                    that together define my research identity.
+                </p>
+            </div>
             <div class="research-grid">
-                <div class="research-card">
+                <div class="research-card anim-ready">
                     <div class="research-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h3>Physiology-Informed AI</h3>
-                    <p>Developing Physiology-informed Models that interpretable ECG analysis and holistic cardiac profiling from long term recording.</p>
+                    <p>Developing physiology-informed models for interpretable ECG analysis and holistic cardiac
+                    profiling from long-term recordings.</p>
                 </div>
-                <div class="research-card">
+                <div class="research-card anim-ready">
                     <div class="research-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Enterprise AI Systems</h3>
-                    <p>Architecting spec-driven AI-workflows for legacy enterprise-scale system modernization. Garnered various skills including LLMs, RAG, and AI Agents.</p>
+                    <p>Architecting spec-driven AI-workflows for legacy enterprise-scale system modernization,
+                    garnering skills in LLMs, RAG, and AI Agents.</p>
                 </div>
-                <div class="research-card">
+                <div class="research-card anim-ready">
                     <div class="research-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Brain Stroke Diagnosis</h3>
-                    <p>Creating robust ML frameworks for early stroke diagnosis in resource-limited environments, 
-                    addressing the 3rd leading cause of disability and death globally through clinical diagnostic systems.</p>
+                    <p>Robust ML frameworks for early stroke diagnosis in resource-limited environments, addressing
+                    the 3rd leading cause of disability globally.</p>
                 </div>
-                <!-- <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-table-list"></i>
-                    </div>
-                    <h3>Sparse Factor Modeling</h3>
-                    <p>Advancing constrained optimization and sparse factor models for estimating unsupervised factors from the healthcare datasets that are clinically significant and interpretable.</p>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-person"></i>
-                    </div>
-                    <h3>3D-Human Pose Analysis</h3>
-                    <p>Facial feature and gait analysis for physiological and neurological examination of stroke patients via 3D Human Pose Estimation.</p>
-                </div> -->
             </div>
         </div>
     </section>
@@ -133,28 +198,33 @@
     <!-- Education Section -->
     <section id="education" class="section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+            <div class="section-header">
+                <p class="eyebrow">Education</p>
+                <h2 class="section-title">Academic path</h2>
+            </div>
+            <div class="edu-timeline">
+
+                <div class="edu-item anim-ready">
+                    <div class="edu-dot"></div>
+                    <div class="edu-card">
                         <h3>PhD in Computer Science</h3>
                         <p class="institution">Indian Institute of Technology Delhi (IIT-Delhi)</p>
-                        <p class="period">Oct 2022 - Present</p>
+                        <p class="period">Oct 2022 – Present</p>
                         <ul>
                             <li><strong>CGPA: 9.43/10</strong></li>
                             <li>Research Focus: Physiology-informed Representation Learning from Electrocardiograms</li>
-                            <li>Advisor: Prof. Rahul Garg (CSE, IIT-Delhi), Prof. Srikanta Bedathur (CSE, IIT-Delhi), and Dr. Vishnu VY (AIIMS-Delhi)</li>
-                            <li>Clinical Collaborators: AIIMS-Delhi & INHS Aswini-Mumbai</li>
+                            <li>Advisors: Prof. Rahul Garg &amp; Prof. Srikanta Bedathur (CSE, IIT-Delhi), Dr. Vishnu VY (AIIMS-Delhi)</li>
+                            <li>Clinical Collaborators: AIIMS-Delhi &amp; INHS Aswini-Mumbai</li>
                         </ul>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+
+                <div class="edu-item anim-ready">
+                    <div class="edu-dot"></div>
+                    <div class="edu-card">
                         <h3>MS (Research) in Computer Science</h3>
                         <p class="institution">Indian Institute of Technology Delhi (IIT-Delhi)</p>
-                        <p class="period">Jan 2020 - Jun 2022</p>
+                        <p class="period">Jan 2020 – Jun 2022</p>
                         <ul>
                             <li><strong>CGPA: 9.68/10</strong></li>
                             <li>Thesis: Machine Learning Based Stroke Detection and Stroke Type Identification in Resource Limitations</li>
@@ -162,12 +232,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+
+                <div class="edu-item anim-ready">
+                    <div class="edu-dot"></div>
+                    <div class="edu-card">
                         <h3>B.Tech. in Electronics and Communication Engineering</h3>
                         <p class="institution">National Institute of Technology Hamirpur (NIT-Hamirpur)</p>
-                        <p class="period">2012 - 2016</p>
+                        <p class="period">2012 – 2016</p>
                         <ul>
                             <li><strong>CGPA: 8.73/10</strong></li>
                             <li>President, Society for Promotion of Electronics Culture (SPEC)</li>
@@ -175,67 +246,79 @@
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Publications Section -->
-    <section id="publications" class="section section-alt">
+    <section id="publications" class="section">
         <div class="container">
-            <h2 class="section-title">Selected Publications</h2>
+            <div class="section-header">
+                <p class="eyebrow">Selected Publications</p>
+                <h2 class="section-title">Research output</h2>
+            </div>
             <div class="publications-list">
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Refining LLM-Based COBOL-to-Java Translation via Natural Language Summary Augmentation</h4>
                     <p class="pub-venue">33rd IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER) 2026</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, V. Arya, Y. Sabharwal.</p>
-                    <p class="pub-note">Oral Presentation, Limassol, Cyprus</p>
+                    <p class="pub-note">Oral Presentation · Limassol, Cyprus</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>A novel machine learning framework for stroke type identification in resource constrained settings with robustness to missing data</h4>
                     <p class="pub-venue">Nature Scientific Reports, 2025</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, Y Antil, MVP Srivastava, PW Vinny, VY Vishnu, R Garg</p>
                     <p class="pub-note">Impact Factor: 4.3</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Calibrating machine learning models for accurate stroke type prediction in low resource settings</h4>
                     <p class="pub-venue">International Journal of Stroke, 2024</p>
                     <p class="pub-authors">A Mehta, <strong>A Bhardwaj</strong>, Y Antil, MVP Srivastava, VP Wilson, V Vishnu, R Garg</p>
                     <p class="pub-note">Impact Factor: 8.7</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Lost In The Past: How domain shift in data impacts the performance of ML-based models for Stroke type identification</h4>
                     <p class="pub-venue">Journal of the Neurological Sciences, World Congress of Neurology (WCN) 2023</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, Y Antil, MVP Srivastava, PW Vinny, VY Vishnu, R Garg</p>
-                    <p class="pub-note">Poster Presentation, Montreal, Canada. Impact Factor: 3.2</p>
+                    <p class="pub-note">Poster Presentation · Montreal, Canada · Impact Factor: 3.2</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>A View Independent Classification Framework for Yoga Postures</h4>
                     <p class="pub-venue">Springer Nature Computer Science, 2022</p>
                     <p class="pub-authors">M Chasmai, N Das, <strong>A. Bhardwaj</strong>, R Garg</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Machine Learning Based Reanalysis of Clinical Scores for Distinguishing Between Ischemic and Hemorrhagic Stroke in Low Resource Setting</h4>
                     <p class="pub-venue">Journal of Stroke and Cerebrovascular Diseases, 2022</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, MVP Srivastava, PV Wilson, A Mehndiratta, VY Vishnu, R Garg</p>
-                    <p class="pub-note">Poster Presentation, Montreal, Canada. Impact Factor: 2.67</p>
+                    <p class="pub-note">Poster Presentation · Montreal, Canada · Impact Factor: 2.67</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Protocol for visual data collection to enable Computer Vision and Deep Learning for the identification of Stroke and Stroke-type in resource limitations</h4>
                     <p class="pub-venue">Journal of the Neurological Sciences, World Congress of Neurology (WCN) 2023</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, Y Antil, MVP Srivastava, PW Vinny, VY Vishnu, R Garg</p>
-                    <p class="pub-note">Oral Presentation, Montreal, Canada</p>
+                    <p class="pub-note">Oral Presentation · Montreal, Canada</p>
                 </div>
-                <div class="publication-item">
+
+                <div class="publication-item anim-ready">
                     <h4>Clinical Identification Of Stroke And Stroke Type Via Clinical Attributes And Gait Analysis In Resource Limited Environment</h4>
                     <p class="pub-venue">International Journal of Stroke, World Stroke Congress 2022</p>
                     <p class="pub-authors"><strong>A. Bhardwaj</strong>, Y Antil, MVP Srivastava, PW Vinny, VY Vishnu, R Garg</p>
-                    <p class="pub-note">Oral Communication, Impact Factor: 6.948</p>
+                    <p class="pub-note">Oral Communication · Impact Factor: 6.948</p>
                 </div>
-                
+
             </div>
-            <div class="text-center">
+            <div class="publications-footer">
                 <a href="https://scholar.google.com/citations?user=mQLijIwAAAAJ&hl=en" target="_blank" class="btn-primary">
-                    View All Publications <i class="fas fa-external-link-alt"></i>
+                    View all on Google Scholar <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
         </div>
@@ -244,197 +327,243 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Research Projects</h2>
+            <div class="section-header">
+                <p class="eyebrow">Research Projects</p>
+                <h2 class="section-title">Building blocks</h2>
+            </div>
             <div class="projects-grid">
-                <div class="project-card">
+
+                <div class="project-card anim-ready">
                     <h3>Physiology-informed Models</h3>
-                    <p class="project-type">PhD Research (Ongoing)</p>
-                    <p>Constrained optimization algorithm integrating finite cardiac conduction velocities for interpretable 
-                    ECG alignment. Matches deep learning performance while maintaining complete clinical interpretability.</p>
+                    <p class="project-type">PhD Research · Ongoing</p>
+                    <p>Constrained optimization algorithm integrating finite cardiac conduction velocities for
+                    interpretable ECG alignment. Matches deep learning performance while maintaining complete
+                    clinical interpretability.</p>
                     <div class="project-tags">
                         <span class="tag">Optimization</span>
                         <span class="tag">Healthcare AI</span>
                         <span class="tag">Interpretability</span>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card anim-ready">
                     <h3>Wearable Biomarker Monitoring</h3>
                     <p class="project-type">Ongoing Research</p>
-                    <p>Non-invasive continuous monitoring of blood glucose and electrolytes via wearable devices for 
-                    cardio-cerebrovascular risk assessment.</p>
+                    <p>Non-invasive continuous monitoring of blood glucose and electrolytes via wearable devices
+                    for cardio-cerebrovascular risk assessment.</p>
                     <div class="project-tags">
                         <span class="tag">Wearables</span>
                         <span class="tag">Signal Processing</span>
                         <span class="tag">Healthcare</span>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>LLM-based Legacy Systems modernization</h3>
+
+                <div class="project-card anim-ready">
+                    <h3>LLM-based Legacy System Modernization</h3>
                     <p class="project-type">IBM Research</p>
-                    <p>Transformer-based models for neural machine translation and automated code generation across 
+                    <p>Transformer-based models for neural machine translation and automated code generation across
                     programming languages with RAG and agentic AI workflows.</p>
                     <div class="project-tags">
                         <span class="tag">LLMs</span>
                         <span class="tag">RAG</span>
                         <span class="tag">AI Agents</span>
-                        <span class="tag">Watson Code Assistant for Z (WCA4Z)</span>
+                        <span class="tag">WCA4Z</span>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card anim-ready">
                     <h3>Early Stroke Diagnosis System</h3>
                     <p class="project-type">Master's Research</p>
-                    <p>Robust ML framework for stroke type identification handling missing data and class imbalance. 
-                    Enables preliminary diagnosis without neuroimaging in resource-constrained environments.</p>
+                    <p>Robust ML framework for stroke type identification handling missing data and class
+                    imbalance. Enables preliminary diagnosis without neuroimaging in resource-constrained
+                    environments.</p>
                     <div class="project-tags">
                         <span class="tag">Machine Learning</span>
                         <span class="tag">Clinical AI</span>
                         <span class="tag">AIIMS Collaboration</span>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>Oblique Sparce Factor Models</h3>
+
+                <div class="project-card anim-ready">
+                    <h3>Oblique Sparse Factor Models</h3>
                     <p class="project-type">Research Tool</p>
-                    <p>Generalized Oblique Sparse Factor Model - doubly-penalized matrix decomposition for exploratory 
-                    analysis with superior sparsity and interpretability on small datasets.</p>
+                    <p>Generalized Oblique Sparse Factor Model — doubly-penalized matrix decomposition for
+                    exploratory analysis with superior sparsity and interpretability on small datasets.</p>
                     <div class="project-tags">
                         <span class="tag">Matrix Decomposition</span>
                         <span class="tag">Sparse Models</span>
                         <span class="tag">Interpretability</span>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card anim-ready">
                     <h3>Computer Vision for Stroke Screening</h3>
                     <p class="project-type">Clinical Collaboration</p>
-                    <p>10-test audio-visual protocol combining NIHSS-8 and Yoga-inspired postures for deep learning 
-                    gait analysis. Piloted at AIIMS-Delhi.</p>
+                    <p>10-test audio-visual protocol combining NIHSS-8 and Yoga-inspired postures for deep
+                    learning gait analysis. Piloted at AIIMS-Delhi.</p>
                     <div class="project-tags">
                         <span class="tag">Computer Vision</span>
                         <span class="tag">Deep Learning</span>
                         <span class="tag">Clinical Validation</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section id="news" class="section section-alt">
+    <!-- Unified Timeline: News + Awards -->
+    <section id="timeline" class="section">
         <div class="container">
-            <h2 class="section-title">Recent News & Updates</h2>
-            <div class="news-timeline">
-                <div class="news-item">
-                    <div class="news-date">Mar 2026</div>
-                    <div class="news-content">
+            <div class="section-header">
+                <p class="eyebrow">Updates &amp; Recognition</p>
+                <h2 class="section-title">News, awards &amp; service</h2>
+                <p class="section-lede">A running log of recent milestones — from paper acceptances and
+                conference presentations to grants and community service.</p>
+            </div>
+
+            <!-- Filter bar -->
+            <div class="tl-filter-bar" role="group" aria-label="Filter timeline">
+                <button class="tl-tab active" data-filter="all">All</button>
+                <button class="tl-tab" data-filter="news">News</button>
+                <button class="tl-tab" data-filter="award">Awards</button>
+                <button class="tl-tab" data-filter="service">Service</button>
+            </div>
+
+            <div class="tl-list" id="tlList">
+
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Mar 2026</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
                         <h4>Oral Presentation at SANER 2026, Limassol, Cyprus</h4>
-                        <p>Presented paper titled "Refining LLM-based COBOL-to-Java Translation via Natural Language Summary Augmentation"</p>
+                        <p>Presented "Refining LLM-based COBOL-to-Java Translation via Natural Language Summary Augmentation".</p>
                     </div>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">Dec 2025</div>
-                    <div class="news-content">
-                        <h4>Paper Accepted at SANER 2026</h4>
-                        <p>My first industrial paper at IBM Research in collaboration with Vijay Arya and Yogish Sabharwal.</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Oct 2025</div>
-                    <div class="news-content">
-                        <h4>Paper Accepted at Nature Scientific Reports</h4>
-                        <p>Title: A Novel Machine Learning Framework for Stroke Type Identification in Resource Constrained Settings with Robustness to Missing Data</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Sep 2025</div>
-                    <div class="news-content">
-                        <h4>Program Committee Member</h4>
-                        <p>Selected as Program Committee Member (Applied Data Science Track) for ACM 13th International 
-                        Conference on Data Science (CODS-COMAD) 2025</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Jul 2024</div>
-                    <div class="news-content">
-                        <h4>Joined IBM Research</h4>
-                        <p>Started as Research Engineer at IBM India Research Lab, AI4Code Team, working on LLMs and 
-                        enterprise AI systems</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Mar 2024</div>
-                    <div class="news-content">
-                        <h4>SERB Core Research Grant</h4>
-                        <p>Awarded Core Research Grant by Science and Engineering Research Board (SERB), DST, Government 
-                        of India for prospective diagnostic study on wearable devices in acute stroke patients</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Dec 2023</div>
-                    <div class="news-content">
-                        <h4>Google Research Week 2023</h4>
-                        <p>Selected for Google Research Week 2023 in Bengaluru, featuring workshops and keynote sessions 
-                        on machine learning foundations</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Jun 2023</div>
-                    <div class="news-content">
-                        <h4>WCN 2023 Acceptance</h4>
-                        <p>Two abstracts accepted at World Congress of Neurology (WCN) 2023, Montreal, Canada - one poster 
-                        and one oral presentation</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Jun 2023</div>
-                    <div class="news-content">
-                        <h4>PhD Coursework Completed</h4>
-                        <p>Completed PhD coursework with CGPA 9.43/10 at IIT Delhi</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Awards Section -->
-    <section id="awards" class="section">
-        <div class="container">
-            <h2 class="section-title">Awards & Honors</h2>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-trophy"></i>
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Dec 2025</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
+                        <h4>Paper Accepted at SANER 2026</h4>
+                        <p>First industrial paper at IBM Research in collaboration with Vijay Arya and Yogish Sabharwal.</p>
                     </div>
-                    <h4>All India Certificate of Merit, Science</h4>
-                    <p class="award-year">2009</p>
-                    <p>Ranked in <strong>AISSE, CBSE</p>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-award"></i>
+
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Oct 2025</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
+                        <h4>Paper Accepted at Nature Scientific Reports</h4>
+                        <p>A Novel Machine Learning Framework for Stroke Type Identification in Resource Constrained Settings with Robustness to Missing Data.</p>
                     </div>
-                    <h4>National-Level Winner</h4>
-                    <p class="award-year">2020</p>
-                    <p>Visual Data Challenge, Indian Conference on Computer Vision, Graphics and Image Processing (ICVGIP) 2020</p>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-graduation-cap"></i>
+
+                <div class="tl-item anim-ready" data-cat="service">
+                    <div class="tl-year">Sep 2025</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-service">Service</span>
+                        <h4>Program Committee Member — CODS-COMAD 2025</h4>
+                        <p>Selected as PC Member (Applied Data Science Track) for ACM 13th International Conference on Data Science.</p>
                     </div>
-                    <h4>Institute Fellowships</h4>
-                    <p class="award-year">2020, 2022</p>
-                    <p>PhD Fellowship (2022) and MS Fellowship (2020) from Indian Institute of Technology Delhi</p>
                 </div>
+
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Jul 2024</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
+                        <h4>Joined IBM Research</h4>
+                        <p>Started as Research Engineer at IBM India Research Lab, AI4Code Team, working on LLMs and enterprise AI systems.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="award">
+                    <div class="tl-year">Mar 2024</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-award">Award</span>
+                        <h4>SERB Core Research Grant</h4>
+                        <p>Awarded Core Research Grant by Science and Engineering Research Board (SERB), DST, Government of India for prospective diagnostic study on wearable devices in acute stroke patients.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="service">
+                    <div class="tl-year">Dec 2023</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-service">Service</span>
+                        <h4>Google Research Week 2023</h4>
+                        <p>Selected for Google Research Week 2023 in Bengaluru, featuring workshops and keynote sessions on machine learning foundations.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Jun 2023</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
+                        <h4>WCN 2023 — Two Abstracts Accepted</h4>
+                        <p>One poster and one oral presentation accepted at World Congress of Neurology (WCN) 2023, Montreal, Canada.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="news">
+                    <div class="tl-year">Jun 2023</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-news">News</span>
+                        <h4>PhD Coursework Completed</h4>
+                        <p>Completed PhD coursework with CGPA 9.43/10 at IIT Delhi.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="award">
+                    <div class="tl-year">2022</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-award">Award</span>
+                        <h4>PhD Fellowship — IIT Delhi</h4>
+                        <p>Institute PhD Fellowship from Indian Institute of Technology Delhi.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="award">
+                    <div class="tl-year">2020</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-award">Award</span>
+                        <h4>National-Level Winner — ICVGIP 2020</h4>
+                        <p>Visual Data Challenge, Indian Conference on Computer Vision, Graphics and Image Processing (ICVGIP) 2020.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="award">
+                    <div class="tl-year">2020</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-award">Award</span>
+                        <h4>MS Research Fellowship — IIT Delhi</h4>
+                        <p>Institute MS Research Fellowship from Indian Institute of Technology Delhi.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item anim-ready" data-cat="award">
+                    <div class="tl-year">2009</div>
+                    <div class="tl-body">
+                        <span class="tl-cat tl-cat-award">Award</span>
+                        <h4>All India Certificate of Merit, Science — AISSE CBSE</h4>
+                        <p>Ranked in the top percentile nationally in the All India Secondary School Examination.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-header">
+                <p class="eyebrow">Get In Touch</p>
+                <h2 class="section-title">Let's connect</h2>
+            </div>
             <div class="contact-content">
                 <p class="contact-intro">
-                    I'm always interested in discussing research collaborations, healthcare AI projects, or opportunities 
-                    in interpretable machine learning. Feel free to reach out!
+                    Always interested in discussing research collaborations, healthcare AI projects, or
+                    opportunities in interpretable machine learning. Feel free to reach out.
                 </p>
                 <div class="contact-grid">
                     <div class="contact-item">
@@ -466,11 +595,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Aman Bhardwaj. All rights reserved.</p>
-            <p class="footer-note">Researcher in AI, Machine Learning, and Healthcare Innovation</p>
+            <p>&copy; <span id="footerYear">2026</span> Aman Bhardwaj. All rights reserved.</p>
+            <p class="footer-note">PhD Researcher · AI, Machine Learning &amp; Healthcare Innovation</p>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
